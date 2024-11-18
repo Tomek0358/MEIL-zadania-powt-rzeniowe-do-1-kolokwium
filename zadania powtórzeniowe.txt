@@ -1,0 +1,207 @@
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+#include <time.h>
+
+int tab[50];
+int silnia()//funkcja do zadania 2
+	{		
+			int a;
+			printf("jaka wartosc do silni?: \n");
+			scanf("%d", &a);
+			int i=0;
+			int wynik=1;
+			while(i<a)
+			{
+				i++;
+				wynik*=i;
+			}
+			 return wynik;
+	}
+float wektordlug(float x, float y, float z)
+{
+	return sqrt(x*x+y*y+z*z);
+}
+int main()
+{
+	srand( time( NULL ) );
+	int x;
+	printf("jakie zadanie?: \n");
+	scanf("%d", &x);
+	switch (x)
+	{
+		 case 1:// zadanie 1
+		{
+			int a;
+			printf("jaka wartosc do silni?: \n");
+			scanf("%d", &a);
+			int i=0;
+			int wynik=1;
+			while(i<a)
+			{
+				i++;
+				wynik*=i;
+			}
+			 printf("%d",wynik);
+			 wait();
+		
+		}
+		 case 2:// zadanie 2
+		{
+			 printf("%d",silnia());
+			 wait();
+		}
+		 case 3:// zadanie 3
+		{
+			int wynik=1;
+			int wynikpoprzedniego=0;
+			int pom;
+			int a;
+			scanf("%d",&a);
+			while(a)
+				{
+					printf("%d\n",wynik);
+				pom=wynik;
+				wynik=wynik+wynikpoprzedniego;
+				wynikpoprzedniego=pom;
+					a--;
+				}
+			wait();			
+		}
+		 case 4: // zadanie 4
+		{
+			int a, b, c;
+			printf("podaj wspólczynniki a, b, c. Oddziel spacjami\n");
+			scanf("%d %d %d", &a, &b, &c);
+			float delta=b*b-(4*a*c);
+			if(delta<0) printf("nie ma pierwiastków");
+			if(delta==0) printf("pierwiastek to %f", -b/(2*a));
+			if(delta>0) printf("pierwszy pierwiastek to %f, drugi to %f",(-b+sqrt(delta))/(2*a), (-b-sqrt(delta))/(2*a));
+			wait();
+		}
+		 case 5: //zadanie 5
+		{
+			int a, r, n;
+			printf("podaj a1, r, n. Oddziel spacjami\n");
+			scanf("%d %d %d", &a,&r,&n);
+			int	wynik=a;
+			while(n)
+			{
+				wynik+=r;
+				n--;
+			}
+			printf("%d", wynik);
+			wait();
+		}
+		 case 6: //zadanie 6
+		{
+			int a, q, n;
+			printf("podaj a1, q, n. Oddziel spacjami\n");
+			scanf("%d %d %d", &a,&q,&n);
+			int	wynik=a;
+			while(n-1)
+			{
+				wynik*=q;
+				n--;
+			}
+			printf("%d", wynik);
+			wait();
+		}
+		 case 7: //zadanie 7
+		{
+			int x1=rand()%50;
+			int x2=rand()%50;
+			int y1=rand()%50;
+			int y2=rand()%50;
+			int r1=rand()%10;
+			int r2=rand()%10;
+			printf("pierwsze kolo: promien=%d s(%d,%d)",r1,x1,y1);
+			printf("drugie kolo: promien=%d s(%d,%d)",r2,x2,y2);
+			float a=(x1-x2)*(x1-x2)+(y1-y2)*(y1-y2);
+			float d = sqrt(a);
+	
+				if(r1==r2 || x1==x2 || y1==y2) printf("pokrywaja sie");
+			 else if (d <= r1 - r2) {
+				printf("nie maja punktow wspolnych");
+				}
+			 else if (d <= r2 - r1) {
+				printf("nie maja punktow wspolnych");
+				}
+			 else if (d < r1 + r2) {
+				printf("przecinaja sie");
+				}
+			else if (d == r1 + r2) {
+				printf("sa styczne");
+			  }
+			else {
+			   printf("nie maja punktow wspolnych");
+		}
+		wait();
+		}
+		 case 8://zadanie 8
+			 {
+				for(int i=0;i<10;i++)
+				{
+					int x=(rand()%11)-5;
+					int y=(rand()%11)-5;
+					int z=(rand()%11)-5;
+					printf("długości:%f %f %f\n",x,y,z);	
+					printf("%f\n",wektordlug(x, y, z));
+				}
+				wait();
+			 }
+		 case 9: //zadanie 9
+			 {
+				 int a, b, c, d, e, f;
+				printf("podaj 6 liczb oddzielonych spacjami\n");
+				scanf("%d %d %d %d %d %d", &a ,&b ,&c ,&d ,&e ,&f);
+				
+				int ilosc=0;
+				int a2=rand()%49+1;
+				int b2=rand()%49+1;
+				int c2=rand()%49+1;
+				int d2=rand()%49+1;
+				int e2=rand()%49+1;
+				int f2=rand()%49+1;
+				printf("\n liczby to: %d %d %d %d %d %d", a2 ,b2 ,c2 ,d2 ,e2 ,f2);
+				tab[a]++; tab[a2]++;
+				tab[b]++; tab[b2]++;
+				tab[c]++; tab[c2]++;
+				tab[d]++; tab[d2]++;
+				tab[e]++; tab[e2]++;
+				tab[f]++; tab[f2]++;
+				
+				for(int i=0;i<50;i++)
+				{
+					if(tab[i]>1) ilosc++;
+				}
+				printf(" ilosc powtarzajacych sie: %d", ilosc);
+				wait();
+			 }
+		 case 10://zadanie 10 nie wiem czy dobrze rozumiem to zadanie
+			 {
+				 long long n=1e7;
+				 int a, b, c, d, e, f;
+				printf("podaj 6 liczb oddzielonych spacjami\n");
+				scanf("%d %d %d %d %d %d", &a ,&b ,&c ,&d ,&e ,&f);
+
+				for(int i=0;i<n;i++)
+				{
+					int a=rand()%49+1;
+					tab[a]++;
+				}
+				printf("%f", 204318/1000000);
+				printf("szansa na %d to %d/%d\n", a, tab[a], n); 
+				printf("szansa na %d to %d/%d\n", b, tab[b], n); 
+				printf("szansa na %d to %d/%d\n", c, tab[c], n); 
+				printf("szansa na %d to %d/%d\n", d, tab[d], n); 
+				printf("szansa na %d to %d/%d\n", e, tab[e], n); 
+				printf("szansa na %d to %d/%d\n", f, tab[f], n); 
+				wait();
+			 }
+	}
+
+
+	return 0;
+}
+
